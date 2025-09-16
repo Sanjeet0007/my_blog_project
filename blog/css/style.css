@@ -1,0 +1,173 @@
+/* C:\Users\mails\my_blog_project\blog\static\css\style.css */
+
+/* Basic Reset & Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden; /* Clear floats */
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: #77aaff 3px solid;
+}
+
+header h1 {
+    margin: 0;
+    padding-bottom: 0.5rem;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #77aaff;
+}
+
+/* Main Content Area */
+main {
+    padding: 20px 0;
+    max-width: 900px; /* Max width for content */
+    margin: 20px auto; /* Center content */
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+/* Blog Post List (Homepage) */
+.post-card {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.post-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.post-card h3 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-card h3 a:hover {
+    color: #77aaff;
+}
+
+.post-card .post-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.post-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Single Post Detail Page */
+.post-detail {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.post-detail h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+.post-detail .post-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.post-detail .post-content {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.post-detail .post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Images on their own line */
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+
+/* Comments Section */
+h3 {
+    margin-top: 30px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.comment {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.comment p {
+    margin: 0 0 5px 0;
+}
+
+.comment strong {
+    color: #007bff;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Responsive Design (Basic) */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    header nav a {
+        margin: 0 8px;
+        font-size: 14px;
+    }
+}

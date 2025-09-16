@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <div class="post-detail">
+        <h2>{{ post.title }}</h2>
+        <p class="post-meta">Published {{ post.publish|date:"F d, Y" }} by {{ post.author.username }}</p>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 100%; height: auto;">
+        {% endif %}
+        <div class="post-content">
+            {{ post.content|linebreaks }} {# Renders newlines as <br> #}
+        </div>
+
+        <h3>Comments</h3>
+        {% for comment in comments %}
+            <div class="comment">
+                <p><strong>
+                    {% if comment.author %} {# <<< This is the corrected syntax #}
+                        {{ comment.author.username }}
+                    {% else %}
+                        Guest
+                    {% endif %}
+                </strong> at {{ comment.created_at|date:"H:i M d, Y" }}</p>
+                <p>{{ comment.content|linebreaks }}</p>
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+
+        {# Form for adding comments will go here later #}
+    </div>
+{% endblock %}

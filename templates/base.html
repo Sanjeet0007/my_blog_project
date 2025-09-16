@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Awesome Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <nav>
+            <a href="{% url 'blog:post_list' %}">Home</a>
+            {% if user.is_authenticated %}
+                {# Admin link sirf superusers ke liye #}
+                {% if user.is_superuser %} {# <<< Yeh line add karein #}
+                    <a href="{% url 'admin:index' %}" style="margin-left: 15px;">Admin</a> {# <<< Yeh line add karein, style for spacing #}
+                {% endif %} {# <<< Yeh line add karein #}
+
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" style="
+                        background: none;
+                        border: none;
+                        /* Original color: #fff, aapne #2e04eb30 kiya tha */
+                        color: #fff; /* White color for better visibility */
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                        cursor: pointer;
+                        margin: 0 15px; /* Margin adjust kiya Admin link aur Logout ke beech */
+                        padding: 0;
+                        font-family: 'Arial', sans-serif;
+                        transition: color 0.3s ease;
+                    ">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        <img src="https://media.istockphoto.com/photos/bloggingblog-concepts-ideas-with-worktable-picture-id922745190?k=20&m=922745190&s=612x612&w=0&h=TqsA7NeMPYXmK1TY5dsbdIsczaUK0OgguehHWdSUqL8=" alt="">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 My Blog</p>
+        <script src="{% static 'js/main.js' %}"></script> {# Agar aapka js file hai #}
+    </footer>
+</body>
+</html>

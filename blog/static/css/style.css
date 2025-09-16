@@ -1,0 +1,456 @@
+/* C:\Users\mails\my_blog_project\blog\static\css\style.css */
+
+/* --- General Styling & Reset --- */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --dark-color: #34495e;
+    --light-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --border-color: #ddd;
+    --bg-color: #f8f9fa;
+    --header-height: 250px; /* Height for the header with background image */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background: var(--dark-color);
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-color);
+
+    /* Image Styling */
+    height: var(--header-height); /* Set a fixed height */
+    background-image: url('../img/blog_header_bg.jpg'); /* <<< Your image here */
+    background-size: cover; /* Cover the entire header area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    display: flex; /* Use flexbox for vertical centering */
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    position: relative;
+    overflow: hidden; /* Ensure image doesn't overflow */
+}
+
+/* Overlay for better text readability on image */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1;
+}
+
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2; /* Bring text above overlay */
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+header nav {
+    margin-top: 10px;
+    position: relative;
+    z-index: 2; /* Bring nav above overlay */
+}
+
+header nav a,
+header nav button {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block; /* For padding and transform */
+}
+
+header nav a:hover,
+header nav button:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Style for the Logout button inside nav */
+header nav form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match other nav items */
+    font-weight: normal; /* Ensure consistent weight */
+}
+
+
+/* --- Main Content Area --- */
+main {
+    padding: 40px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--dark-color);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Blog Post Card */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.post-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.post-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.post-card-content {
+    padding: 25px;
+}
+
+.post-card h3 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.post-card h3 a {
+    color: var(--dark-color);
+    text-decoration: none;
+}
+
+.post-card .post-meta {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.post-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.read-more {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+
+/* --- Single Post Detail Page --- */
+.post-detail {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.post-detail-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.post-detail h2 {
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.post-detail .post-meta {
+    font-size: 1em;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.post-detail .post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.post-detail .post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 30px auto;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Comments Section --- */
+.comments-section h3 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.comment {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.comment p {
+    margin: 0 0 10px 0;
+}
+
+.comment strong {
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+.comment-meta {
+    font-size: 0.85em;
+    color: #95a5a6;
+    margin-top: 5px;
+}
+
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--dark-color);
+    color: #fff;
+    margin-top: 50px;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* --- Forms (Login/Registration/Comment) --- */
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    color: var(--dark-color);
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+}
+
+.form-container form p {
+    margin-bottom: 15px;
+}
+
+.form-container form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-container form input[type="text"],
+.form-container form input[type="email"],
+.form-container form input[type="password"],
+.form-container form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-container form input[type="text"]:focus,
+.form-container form input[type="email"]:focus,
+.form-container form input[type="password"]:focus,
+.form-container form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.form-container form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.form-container form button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+.form-container p.small-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+/* --- Utility Classes --- */
+.text-center {
+    text-align: center;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header nav a,
+    header nav button {
+        font-size: 0.9rem;
+        margin: 0 8px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .post-card-content {
+        padding: 15px;
+    }
+
+    .post-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .post-detail {
+        padding: 20px;
+    }
+
+    .post-detail h2 {
+        font-size: 2.2rem;
+    }
+
+    .comments-section h3 {
+        font-size: 1.8rem;
+    }
+
+    .form-container {
+        padding: 20px;
+        margin: 30px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header nav a,
+    header nav button {
+        margin: 0 5px;
+        padding: 3px 8px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+}

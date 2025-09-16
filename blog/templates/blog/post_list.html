@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}All Posts{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="section-title">Latest Blog Posts</h2>
+        <div class="posts-grid"> {# Naya wrapper div for grid layout #}
+            {% for post in posts %}
+                <div class="post-card">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-card-image">
+                    {% else %}
+                        {# Placeholder image agar koi image nahi hai #}
+                        <img src="{% static 'img/default_post_image.jpg' %}" alt="Default Post Image" class="post-card-image">
+                    {% endif %}
+                    <div class="post-card-content">
+                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                        <p class="post-meta">Published {{ post.publish|date:"F d, Y" }} by {{ post.author.username }}</p>
+                        <p>{{ post.content|truncatewords:30 }}</p> {# Content ko truncate karein #}
+                        <a href="{{ post.get_absolute_url }}" class="read-more">Read More</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No posts found.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

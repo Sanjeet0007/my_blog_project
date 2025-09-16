@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %} {# Agar aap is template mein static files use kar rahe hain #}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="login-form" style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+        <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Login</h2>
+        <form method="post">
+            {% csrf_token %} {# Required for security #}
+            {{ form.as_p }} {# Renders form fields as paragraphs #}
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Login</button>
+        </form>
+        <p style="text-align: center; margin-top: 20px;"><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+        {# Agar aap registration page banate hain to yeh link bhi add kar sakte hain #}
+        {# <p style="text-align: center;">Don't have an account? <a href="{% url 'register' %}">Register here</a></p> #}
+    </div>
+{% endblock %}
