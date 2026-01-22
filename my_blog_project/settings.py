@@ -27,6 +27,8 @@ DEBUG = False
 ALLOWED_HOSTS = ['.onrender.com']
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
